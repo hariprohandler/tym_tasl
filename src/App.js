@@ -13,21 +13,23 @@ let surveyList = [
   { 'name': 'Survey 4', 'id': 4 }
 ];
 let assignedList = [
-  { 'name': 'Survey 5', 'id': 5 },
-  { 'name': 'Survey 6', 'id': 6 },
-  { 'name': 'Survey 7', 'id': 7 },
-  { 'name': 'Survey 8', 'id': 8 }
 ];
 
 
 function App() {
 
-  function addSurvey(item) {
-    console.log(item);
+  function addSurvey(idOfEle) {
+    let filteredSurvey = surveyList.filter((item) => item.id !== idOfEle.id);
+    setSurveyInfo(surveyList = filteredSurvey);
+    assignedList.push(idOfEle);
+    setAssignedList(assignedList = assignedList);
   }
   
-  function removeSurvey(item) {
-    console.log(item);
+  function removeSurvey(idOfEle) {
+    let filteredSurvey = assignedList.filter((item) => item.id !== idOfEle.id);
+    surveyList.push(idOfEle);
+    setSurveyInfo(surveyList = surveyList);
+    setAssignedList(assignedList = filteredSurvey);
   }
   
   function employeeChange() {
@@ -65,6 +67,10 @@ function App() {
         console.log(error);
       }
     )
+    
+    
+
+  let [assignedList, setAssignedList] = useState([]);
     
   return (
     <div className="App">
